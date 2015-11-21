@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{33fe1023-5807-408e-aa30-a81abf51845e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{dbdb18ae-9082-4f54-a541-6ffb17ca4a00}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HavokDefinitions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Serialize.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryInitUtil.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualize.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics2012.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics2012Monitor.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics2012Vdb.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Serialize.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryInitUtil.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Visualize.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012Monitor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012Vdb.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

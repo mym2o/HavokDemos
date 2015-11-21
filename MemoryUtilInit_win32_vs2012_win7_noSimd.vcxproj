@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    
+    SOLUTION_FOLDER = "Demo/StepByStep"
+    
+    SOURCE_LEVEL = "PUBLIC"
+    REQUIRED_HAVOK_PRODUCTS = "COMMON"
+  -->
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|win32">
+      <Configuration>Debug</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dev|win32">
+      <Configuration>Dev</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|win32">
+      <Configuration>Release</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6DB9DEF6-B9DE-4DB9-EF6D-9DEF6DB9DEF6}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Keyword>Application</Keyword>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectName>MemoryUtilInit</ProjectName>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'" Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <CLRSupport>false</CLRSupport>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dev|win32'" Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <CLRSupport>false</CLRSupport>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'" Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <CLRSupport>false</CLRSupport>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  <PropertyGroup>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">.exe</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">.exe</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|win32'">.exe</TargetExt>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">.\debug</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">.\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">MemoryUtilInit_win32-vs2012_win7_noSimd_debug</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">..\..\..\..\Obj\win32_vs2012_win7_noSimd\dev\MemoryUtilInit\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">.\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">MemoryUtilInit_win32-vs2012_win7_noSimd_dev</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">..\..\..\..\Obj\win32_vs2012_win7_noSimd\release\MemoryUtilInit\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">.\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|win32'">MemoryUtilInit_win32-vs2012_win7_noSimd_release</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|win32'">$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\hk2014_1_0_r1\Source</AdditionalIncludeDirectories>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>
+      </BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SDLCheck>
+      </SDLCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnablePREfast>
+      </EnablePREfast>
+      <ExceptionHandling>false</ExceptionHandling>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <OmitFramePointers>
+      </OmitFramePointers>
+      <Optimization>disabled</Optimization>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)MemoryUtilInit.pch</PrecompiledHeaderOutputFile>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;_WIN32;_DEBUG;HK_DEBUG;HK_DEBUG_SLOW;_CONSOLE;_ALLOW_ITERATOR_DEBUG_LEVEL_MISMATCH;;HK_CONFIG_SIMD=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <CompileAsManaged>false</CompileAsManaged>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>
+      </ResourceOutputFileName>
+      <AdditionalIncludeDirectories>$(IntDir);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <IgnoreAllDefaultLibraries>False</IgnoreAllDefaultLibraries>
+      <AdditionalDependencies>hkBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\Lib\win32_vs2012_win7_noSimd\debug</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
+      <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;dxguid.lib;hkgBridge.lib;hkgDx11.lib;hkgOglES.lib;hkgOglES2.lib;hkgOgls.lib;hkgDx9s.lib;hkgSoundCommon.lib;hkgSoundXAudio2.lib;hkgCommon.lib;ImGui.lib;hkpConstraint.lib;hkpConstraintSolver.lib;hkpUtilities.lib;hkpVehicle.lib;hkpDynamics.lib;hkpCollide.lib;hkpInternal.lib;hkaInternal.lib;hkaAnimation.lib;hkaPhysics2012Bridge.lib;hkInternal.lib;hkGeometryUtilities.lib;hkImageUtilities.lib;hkVisualize.lib;hkSerialize.lib;hkCompat.lib;hkSceneData.lib;hkBase.lib;hkcdCollide.lib;hkcdInternal.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\hk2014_1_0_r1\Lib\win32_vs2012_win7_noSimd\debug</AdditionalLibraryDirectories>
+      <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221 /FORCE:MULTIPLE</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>
+      </ImportLibrary>
+      <AssemblyDebug>
+      </AssemblyDebug>
+      <SubSystem>
+      </SubSystem>
+      <ManifestFile>$(IntDir)Manifest$(TargetExt).intermediate.manifest</ManifestFile>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\Source;</AdditionalIncludeDirectories>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>
+      </BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SDLCheck>
+      </SDLCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnablePREfast>
+      </EnablePREfast>
+      <ExceptionHandling>false</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <OmitFramePointers>
+      </OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)MemoryUtilInit.pch</PrecompiledHeaderOutputFile>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;_WIN32;HK_DEBUG;_CONSOLE;_ALLOW_ITERATOR_DEBUG_LEVEL_MISMATCH;;HK_CONFIG_SIMD=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <CompileAsManaged>false</CompileAsManaged>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>
+      </ResourceOutputFileName>
+      <AdditionalIncludeDirectories>$(IntDir);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <IgnoreAllDefaultLibraries>False</IgnoreAllDefaultLibraries>
+      <AdditionalDependencies>hkBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\Lib\win32_vs2012_win7_noSimd\dev</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
+      <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>hkBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\Lib\win32_vs2012_win7_noSimd\dev</AdditionalLibraryDirectories>
+      <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>
+      </ImportLibrary>
+      <AssemblyDebug>
+      </AssemblyDebug>
+      <SubSystem>
+      </SubSystem>
+      <ManifestFile>$(IntDir)Manifest$(TargetExt).intermediate.manifest</ManifestFile>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..;..\..\..\..\Source;</AdditionalIncludeDirectories>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>
+      </BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <SDLCheck>
+      </SDLCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnablePREfast>
+      </EnablePREfast>
+      <ExceptionHandling>false</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <OmitFramePointers>
+      </OmitFramePointers>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)MemoryUtilInit.pch</PrecompiledHeaderOutputFile>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;_WIN32;NDEBUG;_CONSOLE;_ALLOW_ITERATOR_DEBUG_LEVEL_MISMATCH;;HK_CONFIG_SIMD=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+      <CompileAsManaged>false</CompileAsManaged>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>
+      </ResourceOutputFileName>
+      <AdditionalIncludeDirectories>$(IntDir);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Lib>
+      <IgnoreAllDefaultLibraries>False</IgnoreAllDefaultLibraries>
+      <AdditionalDependencies>hkBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\Lib\win32_vs2012_win7_noSimd\release</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
+      <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>hkBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\Lib\win32_vs2012_win7_noSimd\release</AdditionalLibraryDirectories>
+      <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>
+      </ImportLibrary>
+      <AssemblyDebug>
+      </AssemblyDebug>
+      <SubSystem>
+      </SubSystem>
+      <ManifestFile>$(IntDir)Manifest$(TargetExt).intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <DeploymentContent>False</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="MemoryInitUtil.cpp" />
+    <ClCompile Include="Physics2012.cpp" />
+    <ClCompile Include="Physics2012Monitor.cpp" />
+    <ClCompile Include="Physics2012Vdb.cpp" />
+    <ClCompile Include="Serialize.cpp" />
+    <ClCompile Include="Visualize.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HavokDefinitions.h" />
+    <ClInclude Include="MemoryInitUtil.h" />
+    <ClInclude Include="Physics2012.h" />
+    <ClInclude Include="Physics2012Monitor.h" />
+    <ClInclude Include="Physics2012Vdb.h" />
+    <ClInclude Include="Serialize.h" />
+    <ClInclude Include="Visualize.h" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <PropertyGroup>
+    <CleanDependsOn>MemoryUtilInit_CleanReflections;$(CleanDependsOn)</CleanDependsOn>
+  </PropertyGroup>
+  <Target Name="MemoryUtilInit_CleanReflections">
+    <Delete Files="$(MSBuildProjectDirectory)\reflections.db" />
+  </Target>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisInputAssembly>$(OutputFile)</CodeAnalysisInputAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisInputAssembly>$(OutputFile)</CodeAnalysisInputAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisInputAssembly>$(OutputFile)</CodeAnalysisInputAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+  </PropertyGroup>
+</Project>
