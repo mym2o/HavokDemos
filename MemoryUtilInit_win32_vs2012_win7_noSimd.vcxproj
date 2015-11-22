@@ -318,6 +318,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DetailedTimers.cpp" />
     <ClCompile Include="main.cpp">
       <DeploymentContent>False</DeploymentContent>
     </ClCompile>
@@ -330,6 +331,7 @@
     <ClCompile Include="Visualize.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DetailedTimers.h" />
     <ClInclude Include="HavokDefinitions.h" />
     <ClInclude Include="MemoryInitUtil.h" />
     <ClInclude Include="Physics2012.h" />

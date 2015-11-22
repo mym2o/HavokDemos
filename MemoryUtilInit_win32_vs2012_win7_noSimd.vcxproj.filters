@@ -7,57 +7,93 @@
     <Filter Include="Source">
       <UniqueIdentifier>{dbdb18ae-9082-4f54-a541-6ffb17ca4a00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\StandAloneDemos_h">
+      <UniqueIdentifier>{e9a56b27-0a77-4c54-ac4f-793828ce0709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\StandAloneDemos_cpp">
+      <UniqueIdentifier>{7af60e67-495c-4b9e-88ae-c1c351402d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Common">
+      <UniqueIdentifier>{3d22892e-44ce-4c30-b58d-514a4459b6f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Common\Api">
+      <UniqueIdentifier>{1ebc1407-4e35-4372-94f6-6c6b4ccb2732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Common\Api\Base">
+      <UniqueIdentifier>{3904455d-5079-43cd-af31-55ef84fd25cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Common\Api\Base\DetailedTimers">
+      <UniqueIdentifier>{3426cfd7-5883-4f86-b9a3-5ed3552d3bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common">
+      <UniqueIdentifier>{6f941049-a053-46e8-be17-7f91f8413a65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Api">
+      <UniqueIdentifier>{4655b5d5-2106-4a7a-994f-c0821a455105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Api\Base">
+      <UniqueIdentifier>{ed4ab7ed-0e7b-416f-ba19-62bbc13940a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Api\Base\DetailedTimers">
+      <UniqueIdentifier>{bd4b0c40-617f-42c3-986c-b783ac026e49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HavokDefinitions.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Serialize.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="MemoryInitUtil.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Visualize.h">
-      <Filter>Headers</Filter>
+      <Filter>Headers\StandAloneDemos_h</Filter>
     </ClInclude>
     <ClInclude Include="Physics2012.h">
-      <Filter>Headers</Filter>
+      <Filter>Headers\StandAloneDemos_h</Filter>
     </ClInclude>
     <ClInclude Include="Physics2012Monitor.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics2012Vdb.h">
-      <Filter>Headers</Filter>
+      <Filter>Headers\StandAloneDemos_h</Filter>
     </ClInclude>
     <ClInclude Include="Physics2012Mt.h">
-      <Filter>Headers</Filter>
+      <Filter>Headers\StandAloneDemos_h</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics2012Vdb.h">
+      <Filter>Headers\StandAloneDemos_h</Filter>
+    </ClInclude>
+    <ClInclude Include="Serialize.h">
+      <Filter>Headers\StandAloneDemos_h</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualize.h">
+      <Filter>Headers\StandAloneDemos_h</Filter>
+    </ClInclude>
+    <ClInclude Include="DetailedTimers.h">
+      <Filter>Headers\Common\Api\Base\DetailedTimers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Serialize.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="MemoryInitUtil.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Visualize.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\StandAloneDemos_cpp</Filter>
     </ClCompile>
     <ClCompile Include="Physics2012.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\StandAloneDemos_cpp</Filter>
     </ClCompile>
     <ClCompile Include="Physics2012Monitor.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics2012Vdb.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\StandAloneDemos_cpp</Filter>
     </ClCompile>
     <ClCompile Include="Physics2012Mt.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\StandAloneDemos_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012Vdb.cpp">
+      <Filter>Source\StandAloneDemos_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Serialize.cpp">
+      <Filter>Source\StandAloneDemos_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Visualize.cpp">
+      <Filter>Source\StandAloneDemos_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="DetailedTimers.cpp">
+      <Filter>Source\Common\Api\Base\DetailedTimers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

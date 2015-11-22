@@ -34,7 +34,7 @@
 // Platform specific initialization
 #include <Common/Base/System/Init/PlatformInit.cxx>
 
-static void HK_CALL errorReport(const char* msg, void* userContext)
+static void HK_CALL errorReport(const char* msg, void* userContext = HK_NULL)
 {
 	using namespace std;
 	printf("%s\n", msg);
