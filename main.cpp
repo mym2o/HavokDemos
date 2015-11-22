@@ -3,14 +3,15 @@
 
 #pragma once
 
-#include "MemoryInitUtil.h"
-#include "Serialize.h"
-#include "Visualize.h"
-#include "Physics2012.h"
-#include "Physics2012Monitor.h"
-#include "Physics2012Vdb.h"
-#include "Physics2012Mt.h"
-#include "DetailedTimers.h"
+#include "StandAloneDemos\MemoryInitUtil.h"
+#include "StandAloneDemos\Serialize.h"
+#include "StandAloneDemos\Visualize.h"
+#include "StandAloneDemos\Physics2012.h"
+#include "StandAloneDemos\Physics2012Monitor.h"
+#include "StandAloneDemos\Physics2012Vdb.h"
+#include "StandAloneDemos\Physics2012Mt.h"
+#include "Common\Api\Base\DetailedTimers\DetailedTimers.h"
+#include "Common\Api\Base\Streams\Streams.h"
 #include <iostream>
 
 void PlatformInit();
@@ -68,6 +69,12 @@ int HK_CALL main(int argc, const char** argv)
 		case 8:
 		{
 			demo = new DetailedTimers();
+		}
+		break;
+		case 9:
+		{
+			using namespace StreamsHK;
+			demo = new Streams();
 		}
 		break;
 		default:

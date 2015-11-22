@@ -37,6 +37,12 @@
     <Filter Include="Headers\StandAloneDemos">
       <UniqueIdentifier>{e9a56b27-0a77-4c54-ac4f-793828ce0709}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\Common\Api\Base\Streams">
+      <UniqueIdentifier>{f527cfef-4a28-4d11-a535-5839f00501b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Api\Base\Streams">
+      <UniqueIdentifier>{3eadfcbb-4812-4535-b3fe-37409fa18325}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HavokDefinitions.h">
@@ -66,6 +72,9 @@
     <ClInclude Include="DetailedTimers.h">
       <Filter>Headers\Common\Api\Base\DetailedTimers</Filter>
     </ClInclude>
+    <ClInclude Include="Common\Api\Base\Streams\Streams.h">
+      <Filter>Headers\Common\Api\Base\Streams</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -94,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="DetailedTimers.cpp">
       <Filter>Source\Common\Api\Base\DetailedTimers</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Api\Base\Streams\Streams.cpp">
+      <Filter>Source\Common\Api\Base\Streams</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

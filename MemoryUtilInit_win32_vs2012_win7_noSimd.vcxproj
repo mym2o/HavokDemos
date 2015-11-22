@@ -318,6 +318,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Common\Api\Base\Streams\Streams.cpp" />
     <ClCompile Include="DetailedTimers.cpp" />
     <ClCompile Include="main.cpp">
       <DeploymentContent>False</DeploymentContent>
@@ -331,6 +332,7 @@
     <ClCompile Include="Visualize.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common\Api\Base\Streams\Streams.h" />
     <ClInclude Include="DetailedTimers.h" />
     <ClInclude Include="HavokDefinitions.h" />
     <ClInclude Include="MemoryInitUtil.h" />
