@@ -30,6 +30,9 @@
     <ClInclude Include="Physics2012Vdb.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Physics2012Mt.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Physics2012Vdb.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012Mt.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,6 +9,7 @@
 #include "Physics2012.h"
 #include "Physics2012Monitor.h"
 #include "Physics2012Vdb.h"
+#include "Physics2012Mt.h"
 #include <iostream>
 
 void PlatformInit();
@@ -56,6 +57,11 @@ int HK_CALL main(int argc, const char** argv)
 		case 6:
 		{
 			demo = new Physics2012Vdb();
+		}
+		break;
+		case 7:
+		{
+			demo = new Physics2012Mt();
 		}
 		break;
 		default:

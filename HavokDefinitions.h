@@ -56,18 +56,25 @@ public:
 #include <Common\Visualize\hkVisualDebugger.h>
 #include <Physics2012\Utilities\VisualDebugger\hkpPhysicsContext.h>
 
+#include <Physics2012/Dynamics/World/hkpWorld.h>
+
 class VisualDebuggerHk {
 protected:
 	hkVisualDebugger* visualDebugger;
 	hkArray<hkProcessContext*> m_contexts;
+	hkpPhysicsContext* physicsContext;
 public:
-	void setVisualDebugger(hkpWorld* world) {
+	void setVisualDebugger(hkpWorld* world, const bool isMultiThreaded = false) {
 		hkDebugDisplayProcess::registerProcess();
 
 		hkpPhysicsContext::registerAllPhysicsProcesses();
-		hkpPhysicsContext* physicsContext = new hkpPhysicsContext();
+		physicsContext = new hkpPhysicsContext();
 		physicsContext->addWorld(world);
 		m_contexts.pushBack(physicsContext);
+
+		if (isMultiThreaded) {
+			world->unmarkForWrite();
+		}
 
 		visualDebugger = new hkVisualDebugger(m_contexts);
 		visualDebugger->serve();
@@ -84,5 +91,9 @@ public:
 		for (int i = 0; i < m_contexts.getSize(); i++) {
 			delete m_contexts[i];
 		}
+	}
+
+	hkpPhysicsContext* getVDBContext() const {
+		return physicsContext;
 	}
 };

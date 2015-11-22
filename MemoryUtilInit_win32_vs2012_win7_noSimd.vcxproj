@@ -324,6 +324,7 @@
     <ClCompile Include="MemoryInitUtil.cpp" />
     <ClCompile Include="Physics2012.cpp" />
     <ClCompile Include="Physics2012Monitor.cpp" />
+    <ClCompile Include="Physics2012Mt.cpp" />
     <ClCompile Include="Physics2012Vdb.cpp" />
     <ClCompile Include="Serialize.cpp" />
     <ClCompile Include="Visualize.cpp" />
@@ -333,6 +334,7 @@
     <ClInclude Include="MemoryInitUtil.h" />
     <ClInclude Include="Physics2012.h" />
     <ClInclude Include="Physics2012Monitor.h" />
+    <ClInclude Include="Physics2012Mt.h" />
     <ClInclude Include="Physics2012Vdb.h" />
     <ClInclude Include="Serialize.h" />
     <ClInclude Include="Visualize.h" />
