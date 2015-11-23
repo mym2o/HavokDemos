@@ -75,7 +75,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\hk2014_1_0_r1\Source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\irrlicht-1.8.3\include;D:\hk2014_1_0_r1\Source</AdditionalIncludeDirectories>
       <AdditionalOptions>
       </AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
@@ -137,8 +137,8 @@
       <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221</AdditionalOptions>
     </Lib>
     <Link>
-      <AdditionalDependencies>opengl32.lib;dxguid.lib;hkgBridge.lib;hkgDx11.lib;hkgOglES.lib;hkgOglES2.lib;hkgOgls.lib;hkgDx9s.lib;hkgSoundCommon.lib;hkgSoundXAudio2.lib;hkgCommon.lib;ImGui.lib;hkpConstraint.lib;hkpConstraintSolver.lib;hkpUtilities.lib;hkpVehicle.lib;hkpDynamics.lib;hkpCollide.lib;hkpInternal.lib;hkaInternal.lib;hkaAnimation.lib;hkaPhysics2012Bridge.lib;hkInternal.lib;hkGeometryUtilities.lib;hkImageUtilities.lib;hkVisualize.lib;hkSerialize.lib;hkCompat.lib;hkSceneData.lib;hkBase.lib;hkcdCollide.lib;hkcdInternal.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\hk2014_1_0_r1\Lib\win32_vs2012_win7_noSimd\debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Irrlicht.lib;opengl32.lib;dxguid.lib;hkgBridge.lib;hkgDx11.lib;hkgOglES.lib;hkgOglES2.lib;hkgOgls.lib;hkgDx9s.lib;hkgSoundCommon.lib;hkgSoundXAudio2.lib;hkgCommon.lib;ImGui.lib;hkpConstraint.lib;hkpConstraintSolver.lib;hkpUtilities.lib;hkpVehicle.lib;hkpDynamics.lib;hkpCollide.lib;hkpInternal.lib;hkaInternal.lib;hkaAnimation.lib;hkaPhysics2012Bridge.lib;hkInternal.lib;hkGeometryUtilities.lib;hkImageUtilities.lib;hkVisualize.lib;hkSerialize.lib;hkCompat.lib;hkSceneData.lib;hkBase.lib;hkcdCollide.lib;hkcdInternal.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\irrlicht-1.8.3\lib\Win32-visualstudio;D:\hk2014_1_0_r1\Lib\win32_vs2012_win7_noSimd\debug</AdditionalLibraryDirectories>
       <AdditionalOptions>/SUBSYSTEM:CONSOLE,5.01 /ignore:4221 /FORCE:MULTIPLE</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>
@@ -318,30 +318,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Common\Api\Base\DetailedTimers\DetailedTimers.cpp" />
     <ClCompile Include="Common\Api\Base\Streams\Streams.cpp" />
-    <ClCompile Include="DetailedTimers.cpp" />
     <ClCompile Include="main.cpp">
       <DeploymentContent>False</DeploymentContent>
     </ClCompile>
-    <ClCompile Include="MemoryInitUtil.cpp" />
-    <ClCompile Include="Physics2012.cpp" />
-    <ClCompile Include="Physics2012Monitor.cpp" />
-    <ClCompile Include="Physics2012Mt.cpp" />
-    <ClCompile Include="Physics2012Vdb.cpp" />
-    <ClCompile Include="Serialize.cpp" />
-    <ClCompile Include="Visualize.cpp" />
+    <ClCompile Include="StandAloneDemos\MemoryInitUtil.cpp" />
+    <ClCompile Include="StandAloneDemos\Physics2012.cpp" />
+    <ClCompile Include="StandAloneDemos\Physics2012Monitor.cpp" />
+    <ClCompile Include="StandAloneDemos\Physics2012Mt.cpp" />
+    <ClCompile Include="StandAloneDemos\Physics2012Vdb.cpp" />
+    <ClCompile Include="StandAloneDemos\Serialize.cpp" />
+    <ClCompile Include="StandAloneDemos\Visualize.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common\Api\Base\DetailedTimers\DetailedTimers.h" />
     <ClInclude Include="Common\Api\Base\Streams\Streams.h" />
-    <ClInclude Include="DetailedTimers.h" />
     <ClInclude Include="HavokDefinitions.h" />
-    <ClInclude Include="MemoryInitUtil.h" />
-    <ClInclude Include="Physics2012.h" />
-    <ClInclude Include="Physics2012Monitor.h" />
-    <ClInclude Include="Physics2012Mt.h" />
-    <ClInclude Include="Physics2012Vdb.h" />
-    <ClInclude Include="Serialize.h" />
-    <ClInclude Include="Visualize.h" />
+    <ClInclude Include="StandAloneDemos\MemoryInitUtil.h" />
+    <ClInclude Include="StandAloneDemos\Physics2012.h" />
+    <ClInclude Include="StandAloneDemos\Physics2012Monitor.h" />
+    <ClInclude Include="StandAloneDemos\Physics2012Mt.h" />
+    <ClInclude Include="StandAloneDemos\Physics2012Vdb.h" />
+    <ClInclude Include="StandAloneDemos\Serialize.h" />
+    <ClInclude Include="StandAloneDemos\Visualize.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "HavokDefinitions.h"
+#include "../HavokDefinitions.h"
 
 #include <Physics2012\Dynamics\World\hkpWorld.h>
 #include <Physics2012\Collide\Dispatch\hkpAgentRegisterUtil.h>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "HavokDefinitions.h"
+#include "../HavokDefinitions.h"
 
 #include <Common/Base/System/Hardware/hkHardwareInfo.h>
 #include <Common/Base/Thread/Pool/hkCpuThreadPool.h>

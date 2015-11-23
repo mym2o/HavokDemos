@@ -1,6 +1,6 @@
 #pragma once
 
-#include "HavokDefinitions.h"
+#include "../HavokDefinitions.h"
 
 #define HK_EXCLUDE_FEATURE_SerializeDeprecatedPre700
 #define HK_EXCLUDE_FEATURE_RegisterVersionPatches

@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "HavokDefinitions.h"
+#include "../HavokDefinitions.h"
 
 #include <Common\Base\System\Io\IStream\hkIStream.h>
 

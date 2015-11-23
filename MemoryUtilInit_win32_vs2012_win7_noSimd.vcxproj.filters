@@ -48,64 +48,64 @@
     <ClInclude Include="HavokDefinitions.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryInitUtil.h">
-      <Filter>Headers\StandAloneDemos</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics2012.h">
-      <Filter>Headers\StandAloneDemos</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics2012Monitor.h">
-      <Filter>Headers\StandAloneDemos</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics2012Mt.h">
-      <Filter>Headers\StandAloneDemos</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics2012Vdb.h">
-      <Filter>Headers\StandAloneDemos</Filter>
-    </ClInclude>
-    <ClInclude Include="Serialize.h">
-      <Filter>Headers\StandAloneDemos</Filter>
-    </ClInclude>
-    <ClInclude Include="Visualize.h">
-      <Filter>Headers\StandAloneDemos</Filter>
-    </ClInclude>
-    <ClInclude Include="DetailedTimers.h">
+    <ClInclude Include="Common\Api\Base\DetailedTimers\DetailedTimers.h">
       <Filter>Headers\Common\Api\Base\DetailedTimers</Filter>
     </ClInclude>
     <ClInclude Include="Common\Api\Base\Streams\Streams.h">
       <Filter>Headers\Common\Api\Base\Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="StandAloneDemos\MemoryInitUtil.h">
+      <Filter>Headers\StandAloneDemos</Filter>
+    </ClInclude>
+    <ClInclude Include="StandAloneDemos\Physics2012.h">
+      <Filter>Headers\StandAloneDemos</Filter>
+    </ClInclude>
+    <ClInclude Include="StandAloneDemos\Physics2012Monitor.h">
+      <Filter>Headers\StandAloneDemos</Filter>
+    </ClInclude>
+    <ClInclude Include="StandAloneDemos\Physics2012Mt.h">
+      <Filter>Headers\StandAloneDemos</Filter>
+    </ClInclude>
+    <ClInclude Include="StandAloneDemos\Physics2012Vdb.h">
+      <Filter>Headers\StandAloneDemos</Filter>
+    </ClInclude>
+    <ClInclude Include="StandAloneDemos\Serialize.h">
+      <Filter>Headers\StandAloneDemos</Filter>
+    </ClInclude>
+    <ClInclude Include="StandAloneDemos\Visualize.h">
+      <Filter>Headers\StandAloneDemos</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryInitUtil.cpp">
-      <Filter>Source\StandAloneDemos</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics2012.cpp">
-      <Filter>Source\StandAloneDemos</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics2012Monitor.cpp">
-      <Filter>Source\StandAloneDemos</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics2012Mt.cpp">
-      <Filter>Source\StandAloneDemos</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics2012Vdb.cpp">
-      <Filter>Source\StandAloneDemos</Filter>
-    </ClCompile>
-    <ClCompile Include="Serialize.cpp">
-      <Filter>Source\StandAloneDemos</Filter>
-    </ClCompile>
-    <ClCompile Include="Visualize.cpp">
-      <Filter>Source\StandAloneDemos</Filter>
-    </ClCompile>
-    <ClCompile Include="DetailedTimers.cpp">
+    <ClCompile Include="Common\Api\Base\DetailedTimers\DetailedTimers.cpp">
       <Filter>Source\Common\Api\Base\DetailedTimers</Filter>
     </ClCompile>
     <ClCompile Include="Common\Api\Base\Streams\Streams.cpp">
       <Filter>Source\Common\Api\Base\Streams</Filter>
+    </ClCompile>
+    <ClCompile Include="StandAloneDemos\MemoryInitUtil.cpp">
+      <Filter>Source\StandAloneDemos</Filter>
+    </ClCompile>
+    <ClCompile Include="StandAloneDemos\Physics2012.cpp">
+      <Filter>Source\StandAloneDemos</Filter>
+    </ClCompile>
+    <ClCompile Include="StandAloneDemos\Physics2012Monitor.cpp">
+      <Filter>Source\StandAloneDemos</Filter>
+    </ClCompile>
+    <ClCompile Include="StandAloneDemos\Physics2012Mt.cpp">
+      <Filter>Source\StandAloneDemos</Filter>
+    </ClCompile>
+    <ClCompile Include="StandAloneDemos\Physics2012Vdb.cpp">
+      <Filter>Source\StandAloneDemos</Filter>
+    </ClCompile>
+    <ClCompile Include="StandAloneDemos\Serialize.cpp">
+      <Filter>Source\StandAloneDemos</Filter>
+    </ClCompile>
+    <ClCompile Include="StandAloneDemos\Visualize.cpp">
+      <Filter>Source\StandAloneDemos</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

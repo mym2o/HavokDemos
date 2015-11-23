@@ -1,6 +1,6 @@
 #pragma once
 
-#include "HavokDefinitions.h"
+#include "../HavokDefinitions.h"
 
 #include <Common/Base/Monitor/hkMonitorStream.h>
 #include <Common/Base/Monitor/MonitorStreamAnalyzer/hkMonitorStreamAnalyzer.h>

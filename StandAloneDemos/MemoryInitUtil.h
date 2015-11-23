@@ -1,6 +1,6 @@
 #pragma once
 
-#include "HavokDefinitions.h"
+#include "../HavokDefinitions.h"
 
 // Also we're not using any serialization/versioning so we don't need any of these.
 #define HK_EXCLUDE_FEATURE_SerializeDeprecatedPre700

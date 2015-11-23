@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include "HavokDefinitions.h"
+#include "../../../../HavokDefinitions.h"
 
 #include <Common/Base/Types/Color/hkColor.h>
 
