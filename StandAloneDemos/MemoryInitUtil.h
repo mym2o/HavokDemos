@@ -15,5 +15,5 @@ class MemoryInitUtil : public HavokInterface {
 
 		void initHk();
 		void quitHk();
-		void run();
+		void runHk();
 };

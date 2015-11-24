@@ -40,6 +40,6 @@ public:
 	~DetailedTimers();
 
 	void initHk();
-	void run();
+	void runHk();
 	void quitHk();
 };

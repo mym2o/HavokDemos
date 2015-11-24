@@ -29,6 +29,6 @@ public:
 	virtual ~Physics2012Monitor();
 
 	void initHk();
-	void run();
+	void runHk();
 	void quitHk();
 };

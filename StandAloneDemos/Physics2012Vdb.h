@@ -27,6 +27,6 @@ public:
 	virtual ~Physics2012Vdb();
 
 	void initHk();
-	void run();
+	void runHk();
 	void quitHk();
 };

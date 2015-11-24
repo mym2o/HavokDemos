@@ -335,6 +335,7 @@
     <ClInclude Include="Common\Api\Base\DetailedTimers\DetailedTimers.h" />
     <ClInclude Include="Common\Api\Base\Streams\Streams.h" />
     <ClInclude Include="HavokDefinitions.h" />
+    <ClInclude Include="IrrInterface.h" />
     <ClInclude Include="StandAloneDemos\MemoryInitUtil.h" />
     <ClInclude Include="StandAloneDemos\Physics2012.h" />
     <ClInclude Include="StandAloneDemos\Physics2012Monitor.h" />

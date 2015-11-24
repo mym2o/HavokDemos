@@ -75,6 +75,9 @@
     <ClInclude Include="StandAloneDemos\Visualize.h">
       <Filter>Headers\StandAloneDemos</Filter>
     </ClInclude>
+    <ClInclude Include="IrrInterface.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

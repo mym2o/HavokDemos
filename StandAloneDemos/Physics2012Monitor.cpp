@@ -13,7 +13,7 @@ void Physics2012Monitor::initHk() {
 	hkBaseSystem::init(memoryRouter, errorReport);
 }
 
-void Physics2012Monitor::run() {
+void Physics2012Monitor::runHk() {
 	hkMonitorStreamAnalyzer monitorAnalyzer(1024 * 1024);
 	hkMonitorStream& monitorStream = hkMonitorStream::getInstance();
 	monitorStream.resize(500 * 1024);	//500K for timer info

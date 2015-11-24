@@ -15,7 +15,7 @@ void Physics2012Mt::initHk() {
 	initThreads();
 }
 
-void Physics2012Mt::run() {
+void Physics2012Mt::runHk() {
 	initPhysics();
 
 	vdb.setVisualDebugger(m_world, true);

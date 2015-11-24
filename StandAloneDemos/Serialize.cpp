@@ -24,7 +24,7 @@ void Serialize::quitHk() {
 	hkMemoryInitUtil::quit();
 }
 
-void Serialize::run() {
+void Serialize::runHk() {
 	setGeometry();
 	writeXMLtagfile();
 	readBack();

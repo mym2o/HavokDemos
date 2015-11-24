@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../HavokDefinitions.h"
+#include "../IrrInterface.h"
 
 #define HK_EXCLUDE_FEATURE_SerializeDeprecatedPre700
 #define HK_EXCLUDE_FEATURE_RegisterVersionPatches
@@ -34,10 +35,13 @@
 //TO MAKE THE LINKER HAPPY
 //#include <Common/Serialize/Util/hkBuiltinTypeRegistry.h>
 
-class Visualize : public HavokInterface {
+class Visualize : public HavokInterface, IrrInterface {
 private:
-	hkTransform m_transform;
 	hkpWorld* m_world;
+	hkpRigidBody* dynamicBody_hk;
+	scene::IMeshSceneNode* dynamicBody_irr;
+
+	hkTransform m_transform;
 	VisualDebuggerHk vdb;
 
 	void initPhysicWorld();
@@ -52,5 +56,10 @@ public:
 
 	void initHk();
 	void quitHk();
-	void run();
+	void runHk();
+
+	const int runIrr();
+	const int IrrInterface::add_cameraIrr();
+	const int IrrInterface::add_gui_elementsIrr();
+	const int IrrInterface::add_scene_nodesIrr();
 };

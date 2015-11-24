@@ -64,7 +64,7 @@ void Physics2012::quitHk() {
 	hkMemoryInitUtil::quit();
 }
 
-void Physics2012::run() {
+void Physics2012::runHk() {
 	initPhysics();
 	vdb.setVisualDebugger(world);
 	stepPhysics();

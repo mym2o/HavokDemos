@@ -14,6 +14,8 @@
 #include "Common\Api\Base\Streams\Streams.h"
 #include <iostream>
 
+#include <driverChoice.h>
+
 void PlatformInit();
 void PlatformFileSystemInit();
 
@@ -33,16 +35,19 @@ int HK_CALL main(int argc, const char** argv)
 		{
 		case 1:
 		{
+			//No 3D
 			demo = new MemoryInitUtil();
 		}
 		break;
 		case 2:
 		{
+			//No 3D
 			demo = new Serialize();
 		}
 		break;
 		case 3:
 		{
+			//TODO: 3D
 			demo = new Visualize();
 		}
 		break;
@@ -85,7 +90,7 @@ int HK_CALL main(int argc, const char** argv)
 		}
 		if (demo) {
 			demo->initHk();
-			demo->run();
+			demo->runHk();
 			demo->quitHk();
 		}
 		demo = NULL;

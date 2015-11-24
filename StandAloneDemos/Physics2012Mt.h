@@ -45,6 +45,6 @@ public:
 	virtual ~Physics2012Mt();
 
 	void initHk();
-	void run();
+	void runHk();
 	void quitHk();
 };

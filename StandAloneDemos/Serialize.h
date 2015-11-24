@@ -48,5 +48,5 @@ public:
 
 	virtual void initHk();
 	virtual void quitHk();
-	virtual void run();
+	virtual void runHk();
 };

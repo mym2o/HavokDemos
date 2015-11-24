@@ -48,7 +48,7 @@ namespace StreamsHK {
 		~Streams();
 
 		void initHk();
-		void run();
+		void runHk();
 		void quitHk();
 
 		//Output Streams

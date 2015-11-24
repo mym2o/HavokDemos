@@ -18,6 +18,6 @@ void MemoryInitUtil::quitHk() {
 	hkMemoryInitUtil::quit();
 }
 
-void MemoryInitUtil::run() {
+void MemoryInitUtil::runHk() {
 	HK_WARN_ALWAYS(0x47625fd12, "Hello World!");
 }

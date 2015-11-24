@@ -13,7 +13,7 @@ void DetailedTimers::initHk() {
 	hkBaseSystem::init(memoryRouter, errorReport);
 }
 
-void DetailedTimers::run() {
+void DetailedTimers::runHk() {
 	timeDetailedTimers(100, "DetailedTimers_stats.txt");
 }
 

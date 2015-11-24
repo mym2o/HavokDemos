@@ -15,7 +15,7 @@ void Streams::initHk() {
 	hkBaseSystem::init(memoryRouter, errorReport);
 }
 
-void Streams::run() {
+void Streams::runHk() {
 	if (m_done == false) {
 		m_done = true;
 		hkReferencedObject::lockAll();

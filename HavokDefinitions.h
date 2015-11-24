@@ -49,7 +49,7 @@ public:
 
 	virtual void initHk() = 0;
 	virtual void quitHk() = 0;
-	virtual void run() = 0;
+	virtual void runHk() = 0;
 };
 
 //Visual Debugger includes

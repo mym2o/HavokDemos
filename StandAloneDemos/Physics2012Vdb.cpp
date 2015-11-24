@@ -19,7 +19,7 @@ void Physics2012Vdb::initHk() {
 	stream.reset();
 }
 
-void Physics2012Vdb::run() {
+void Physics2012Vdb::runHk() {
 	initPhysics();
 
 	vdb.setVisualDebugger(m_world);
