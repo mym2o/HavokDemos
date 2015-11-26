@@ -26,7 +26,7 @@ protected:
 	scene::ISceneManager* scene_manager;
 	gui::IGUIEnvironment* gui_env;
 public:
-	IrrInterface(const video::E_DRIVER_TYPE deviceType = video::EDT_OPENGL, const u32& h = 640, const u32& w = 480, const u32& bits = 16, const bool& fullscreen = false, const bool& stencilBuffer = false) {
+	IrrInterface(const video::E_DRIVER_TYPE deviceType = video::EDT_OPENGL, const u32& h = 640, const u32& w = 480, const u32& bits = 16, const bool& fullscreen = false, const bool& stencilBuffer = true) {
 		device = createDevice(deviceType, core::dimension2d<u32>(h, w), bits, fullscreen, stencilBuffer, fullscreen, 0);
 		driver = device->getVideoDriver();
 		gui_env = device->getGUIEnvironment();
@@ -49,6 +49,7 @@ public:
 	virtual const int add_scene_nodesIrr() = 0;
 	virtual const int add_cameraIrr() = 0;
 	virtual const int quit_Irr() {
+		device->closeDevice();
 		device->drop();
 		return 0;
 	}

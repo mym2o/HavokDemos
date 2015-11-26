@@ -18,6 +18,10 @@ void Physics2012Mt::initHk() {
 void Physics2012Mt::runHk() {
 	initPhysics();
 
+	add_cameraIrr();
+	add_gui_elementsIrr();
+	add_scene_nodesIrr();
+
 	vdb.setVisualDebugger(m_world, true);
 
 	//Simulate the world for 1 minute
@@ -28,6 +32,8 @@ void Physics2012Mt::runHk() {
 	int numSteps = int(10.f / timeStep);
 	for (int i = 0; i < numSteps; i++) {
 		m_world->stepMultithreaded(jobQueue, threadPool, timeStep);
+
+		runIrr();
 
 		vdb.getVDBContext()->syncTimers(threadPool);
 		vdb.step();
@@ -56,6 +62,8 @@ void Physics2012Mt::quitHk() {
 
 	hkBaseSystem::quit();
 	hkMemoryInitUtil::quit();
+
+	quit_Irr();
 }
 
 void Physics2012Mt::initThreads() {
@@ -118,6 +126,12 @@ void Physics2012Mt::createGroundPh() {
 	m_world->addEntity(rigidBody);
 	rigidBody->removeReference();
 	shape->removeReference();
+
+	scene::IMeshSceneNode* g_ground = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(0.f, -2.f, 0.f), core::vector3df(), core::vector3df(140.f, 4.f, 280.f));
+	//g_ground->setMaterialFlag(video::EMF_LIGHTING, false);
+	g_ground->addShadowVolumeSceneNode();
+	g_ground->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
+	scene_manager->getMeshManipulator()->setVertexColors(g_ground->getMesh(), video::SColor(255, 255, 0, 0));
 }
 
 void Physics2012Mt::createWallsPh(hkVector4& posy) {
@@ -175,7 +189,14 @@ void Physics2012Mt::createSingleWallPh(const int height, const int length, const
 				boxInfo.m_position = pos;
 				hkpRigidBody* boxRigidBody = new hkpRigidBody(boxInfo);
 				m_world->addEntity(boxRigidBody);
+				m_walls.pushBack(boxRigidBody);
 				boxRigidBody->removeReference();
+
+				scene::IMeshSceneNode* g_wall = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(pos(0), pos(1), pos(2)), core::vector3df(), core::vector3df(2.f, 1.f, 1.f));
+				g_wall->addShadowVolumeSceneNode();
+				g_wall->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
+				scene_manager->getMeshManipulator()->setVertexColors(g_wall->getMesh(), video::SColor(255, 142, 22, 175));
+				g_walls.push_back(g_wall);
 			}
 
 			pos(1) += (halfExtents(1) + box->getRadius()) * 2.0f;
@@ -183,6 +204,14 @@ void Physics2012Mt::createSingleWallPh(const int height, const int length, const
 			boxInfo.m_position = pos;
 			hkpRigidBody* boxRigidBody = new hkpRigidBody(boxInfo);
 			entitiesToAdd.pushBack(boxRigidBody);
+			m_walls.pushBack(boxRigidBody);
+
+			scene::IMeshSceneNode* g_wall = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(pos(0), pos(1), pos(2)), core::vector3df(), core::vector3df(2.f, 1.f, 1.f));
+			g_wall->addShadowVolumeSceneNode();
+			g_wall->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
+			scene_manager->getMeshManipulator()->setVertexColors(g_wall->getMesh(), video::SColor(255, 142, 22, 175));
+			g_walls.push_back(g_wall);
+
 			pos(0) -= halfExtents(0) * 0.6f;
 		}
 		posx(0) += halfExtents(0) * 2.0f + gapWidth;
@@ -219,4 +248,72 @@ void Physics2012Mt::createBallPh(hkVector4& posy) {
 
 	hkVector4 vel(0.0f, 4.9f, -100.0f);
 	sphereRigidBody->setLinearVelocity(vel);
+
+	g_ball = scene_manager->addSphereSceneNode(radius, 16);
+	g_ball->setPosition(core::vector3df(m_ball->getPosition()(0), m_ball->getPosition()(1), m_ball->getPosition()(2)));
+	//g_ball->setMaterialFlag(video::EMF_LIGHTING, false);
+	g_ball->addShadowVolumeSceneNode();
+	g_ball->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
+	scene_manager->getMeshManipulator()->setVertexColors(g_ball->getMesh(), video::SColor(255, 0, 255, 0));
+}
+
+//---------------------------Irrlicht-------------------------------//
+
+const int Physics2012Mt::add_cameraIrr() {
+	scene_manager->addCameraSceneNode(0, core::vector3df(10.f, 19.f, -20.f), core::vector3df());
+	//scene_manager->addCameraSceneNodeFPS();
+
+	return 0;
+}
+
+const int Physics2012Mt::add_gui_elementsIrr() {
+	device->setWindowCaption(L"Physics2012Mt Demo - Havok+Irrlicht Engine");
+
+	return 0;
+}
+
+const int Physics2012Mt::add_scene_nodesIrr() {
+	scene_manager->addLightSceneNode(0, core::vector3df(0, 100, 20), video::SColorf(1.0f, 1.f, 1.f, 1.0f), 800.0f);
+	return 0;
+}
+
+const int Physics2012Mt::runIrr() {
+	device->run();
+
+	driver->beginScene();
+
+	scene_manager->drawAll();
+	gui_env->drawAll();
+
+	driver->setTransform(video::ETS_WORLD, core::matrix4());
+
+	//ball position & rotation
+	hkVector4 newpos = m_ball->getPosition();
+	g_ball->setPosition(core::vector3df(newpos(0), newpos(1), newpos(2)));
+
+	hkQuaternion newrot_hk = m_ball->getRotation();
+	if (newrot_hk.hasValidAxis()) {
+		hkVector4f axis;
+		newrot_hk.getAxis(axis);
+		float angle = core::radToDeg(newrot_hk.getAngle());
+		g_ball->setRotation(core::vector3df(axis(0), axis(1), axis(2)) * angle);
+	}
+
+	//walls positions & rotations
+	for (int i = 0; i < m_walls.getSize(); i++) {
+		newpos = m_walls[i]->getPosition();
+		g_walls[i]->setPosition(core::vector3df(newpos(0), newpos(1), newpos(2)));
+
+		newrot_hk = m_walls[i]->getRotation();
+		if (newrot_hk.hasValidAxis()) {
+			hkVector4f axis;
+			newrot_hk.getAxis(axis);
+			float angle = core::radToDeg(newrot_hk.getAngle());
+			g_walls[i]->setRotation(core::vector3df(axis(0), axis(1), axis(2)) * angle);
+		}
+	}
+
+	driver->endScene();
+
+	return 0;
 }

@@ -32,10 +32,12 @@ void Visualize::createGround() {
 	//we don't need to save this node, because it is fixed (no physics applyied on it)
 	scene::IMeshSceneNode* ground_node = scene_manager->addCubeSceneNode(1.0f, 0, -1, core::vector3df(0, -0.5f, 0), core::vector3df(0, 0, 0), core::vector3df(40, 1, 40));
 	if (ground_node) {
+		ground_node->addShadowVolumeSceneNode();
 		//we have no texture, than we need the light to see our ground
-		ground_node->setMaterialFlag(video::EMF_LIGHTING, false);
+		//ground_node->setMaterialFlag(video::EMF_LIGHTING, false);
 		ground_node->setMaterialFlag(video::EMF_ANTI_ALIASING, true);
 		ground_node->setMaterialType(video::EMT_SOLID);
+		ground_node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
 		scene_manager->getMeshManipulator()->setVertexColors(ground_node->getMesh(), video::SColor(0, 255, 0, 0));
 	}
 
@@ -60,9 +62,11 @@ void Visualize::addDynamicBody() {
 	//add a 3d dynamic falling body
 	dynamicBody_irr = scene_manager->addCubeSceneNode(1.0f, 0, -1, core::vector3df(0, 10, 0), core::vector3df(0, 0, 0), core::vector3df(1, 1, 1));
 	scene_manager->getMeshManipulator()->setVertexColors(dynamicBody_irr->getMesh(), video::SColor(0, 0, 255, 0));
-	dynamicBody_irr->setMaterialFlag(video::EMF_LIGHTING, false);
+	//dynamicBody_irr->setMaterialFlag(video::EMF_LIGHTING, false);
+	dynamicBody_irr->addShadowVolumeSceneNode();
 	dynamicBody_irr->setMaterialFlag(video::EMF_ANTI_ALIASING, true);
 	dynamicBody_irr->setMaterialType(video::EMT_SOLID);
+	dynamicBody_irr->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
 
 	dynamicBody_hk = new hkpRigidBody(bodyInfo);
 	bodyInfo.m_shape->removeReference();
@@ -91,13 +95,13 @@ void Visualize::initHk() {
 }
 
 void Visualize::runHk() {
-	initPhysicWorld();
-
 	//---Irrlicht initialization---//
 	add_gui_elementsIrr();
 	add_cameraIrr();
 	add_scene_nodesIrr();
 	//---end---//
+
+	initPhysicWorld();
 	
 	vdb.setVisualDebugger(m_world);
 
@@ -134,7 +138,7 @@ void Visualize::quitHk() {
 //---------------------------Irrlicht-------------------------------//
 
 const int Visualize::add_cameraIrr() {
-	scene_manager->addCameraSceneNode(0, core::vector3df(30, 0, 0), core::vector3df(0, 0, 0));
+	scene_manager->addCameraSceneNode(0, core::vector3df(10, 30, 10), core::vector3df(0, 0, 0));
 
 	return 0;
 }
@@ -146,6 +150,7 @@ const int Visualize::add_gui_elementsIrr() {
 }
 
 const int Visualize::add_scene_nodesIrr() {
+	scene_manager->addLightSceneNode(0, core::vector3df(0, 30, 0), video::SColorf(1.0f, 0.6f, 0.7f, 1.0f), 800.0f);
 	return 0;
 }
 
@@ -170,10 +175,12 @@ const int Visualize::runIrr() {
 	dynamicBody_irr->setPosition(newpos_irr);
 
 	hkQuaternion newrot_hk = dynamicBody_hk->getRotation();
-	hkVector4f axis;
-	newrot_hk.getAxis(axis);
-	float angle = newrot_hk.getAngle() * core::RADTODEG;
-	dynamicBody_irr->setRotation(core::vector3df(axis(0), axis(1), axis(2)) * angle);
+	if (newrot_hk.hasValidAxis()) {
+		hkVector4f axis;
+		newrot_hk.getAxis(axis);
+		float angle = newrot_hk.getAngle() * core::RADTODEG;
+		dynamicBody_irr->setRotation(core::vector3df(axis(0), axis(1), axis(2)) * angle);
+	}
 
 	driver->endScene();
 

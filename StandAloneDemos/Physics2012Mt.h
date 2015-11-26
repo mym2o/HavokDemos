@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../HavokDefinitions.h"
+#include "../IrrInterface.h"
 
 #include <Common/Base/System/Hardware/hkHardwareInfo.h>
 #include <Common/Base/Thread/Pool/hkCpuThreadPool.h>
@@ -26,13 +27,17 @@
 #define HK_EXCLUDE_FEATURE_RegisterVersionPatches
 #define HK_EXCLUDE_LIBRARY_hkGeometryUtilities
 
-class Physics2012Mt : public HavokInterface {
+class Physics2012Mt : public HavokInterface, IrrInterface {
 private:
 	hkpWorld* m_world;
 	hkpRigidBody* m_ball;
+	hkArray<hkpRigidBody*> m_walls;
 	VisualDebuggerHk vdb;
 	hkJobQueue* jobQueue;
 	hkThreadPool* threadPool;
+
+	scene::IMeshSceneNode* g_ball;
+	core::array<scene::IMeshSceneNode*> g_walls;
 
 	void initThreads();
 	void initPhysics();
@@ -40,6 +45,11 @@ private:
 	void createWallsPh(hkVector4& posy);
 	void createSingleWallPh(const int height, const int length, const hkVector4& position, const hkReal gapWidth, hkpConvexShape* box, hkVector4Parameter halfExtents);
 	void createBallPh(hkVector4& posy);
+
+	const int runIrr();
+	const int add_cameraIrr();
+	const int add_scene_nodesIrr();
+	const int add_gui_elementsIrr();
 public:
 	Physics2012Mt();
 	virtual ~Physics2012Mt();
