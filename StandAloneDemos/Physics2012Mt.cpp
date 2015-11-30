@@ -1,6 +1,6 @@
 #include "Physics2012Mt.h"
 
-Physics2012Mt::Physics2012Mt() {
+Physics2012Mt::Physics2012Mt() : IrrInterface() {
 
 }
 

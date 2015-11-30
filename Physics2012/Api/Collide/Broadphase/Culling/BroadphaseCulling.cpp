@@ -1,8 +1,9 @@
 #include "BroadphaseCulling.h"
 
-BroadphaseCulling::BroadphaseCulling() : m_rand(180673) {
+BroadphaseCulling::BroadphaseCulling() : m_rand(180673), IrrInterface() {
 	m_numRigidBodies = 1024;
 	m_numUserObjects = 0;
+	g_irrvecs.clear();
 }
 
 BroadphaseCulling::~BroadphaseCulling() {
@@ -36,7 +37,8 @@ void BroadphaseCulling::initHk() {
 		
 		hkArray<const hkpCollidable*> collidables;
 		
-		BroadphaseCulling::createRandomBodies(m_world, worldAabb, m_numRigidBodies, motionType, &rand, collidables);
+		//we store the rigid bodies to update our graphics
+		m_bodies = BroadphaseCulling::createRandomBodies(m_world, worldAabb, m_numRigidBodies, motionType, &rand, collidables);
 	}
 
 	//create random user object as phantoms
@@ -58,6 +60,10 @@ void BroadphaseCulling::initHk() {
 }
 
 void BroadphaseCulling::runHk() {
+	add_cameraIrr();
+	add_gui_elementsIrr();
+	add_scene_nodesIrr();
+
 	vdb.setVisualDebugger(m_world);
 
 	hkStopwatch stopWatch;
@@ -73,6 +79,8 @@ void BroadphaseCulling::runHk() {
 
 		step();
 
+		runIrr();
+
 		while (stopWatch.getElapsedSeconds() < lastTime + timeStep);
 		lastTime += timeStep;
 	}
@@ -84,9 +92,13 @@ void BroadphaseCulling::quitHk() {
 	vdb.quitVdb();
 	hkBaseSystem::quit();
 	hkMemoryInitUtil::quit();
+
+	quit_Irr();
 }
 
-void BroadphaseCulling::createRandomBodies(hkpWorld* world, const hkAabb& worldAabb, int num_bodies, hkpMotion::MotionType motionType, class hkPseudoRandomGenerator* rand, hkArray<const hkpCollidable*>& collidablesOut) {
+std::vector<hkpRigidBody*> BroadphaseCulling::createRandomBodies(hkpWorld* world, const hkAabb& worldAabb, int num_bodies, hkpMotion::MotionType motionType, class hkPseudoRandomGenerator* rand, hkArray<const hkpCollidable*>& collidablesOut) {
+	std::vector<hkpRigidBody*> bodiesToReturn;
+
 	hkpRigidBodyCinfo rigidBodyInfo;
 	rigidBodyInfo.m_collisionFilterInfo = hkpGroupFilter::calcFilterInfo(1, 1);
 
@@ -130,6 +142,8 @@ void BroadphaseCulling::createRandomBodies(hkpWorld* world, const hkAabb& worldA
 		bodyArray.pushBack(rigidBody);
 		collidablesOut.pushBack(rigidBody->getCollidable());
 
+		bodiesToReturn.push_back(rigidBody);
+
 		//there is no gravity vector for this world and so the bodies will appear to float in space
 	}
 	shape->removeReference();
@@ -142,6 +156,8 @@ void BroadphaseCulling::createRandomBodies(hkpWorld* world, const hkAabb& worldA
 	for (int i = 0; i < bodyArray.getSize(); i++) {
 		bodyArray[i]->removeReference();
 	}
+
+	return bodiesToReturn;
 }
 
 void BroadphaseCulling::step() {
@@ -222,6 +238,12 @@ void BroadphaseCulling::step() {
 	HK_DISPLAY_LINE(farPlaneQuad[2], nearPlaneQuad[2], hkColor::YELLOW);
 	HK_DISPLAY_LINE(farPlaneQuad[3], nearPlaneQuad[3], hkColor::YELLOW);
 
+	//hk line to irr line
+	for (int i = 0; i < 4; i++) {
+		irr_farPlaneQuad[i] = core::vector3df(farPlaneQuad[i](0), farPlaneQuad[i](1), farPlaneQuad[i](2));
+		irr_nearPlaneQuad[i] = core::vector3df(nearPlaneQuad[i](0), nearPlaneQuad[i](1), nearPlaneQuad[i](2));
+	}
+
 	//compute frustum plane
 	hkVector4 planes[6];
 
@@ -257,7 +279,9 @@ void BroadphaseCulling::step() {
 			color = spectrumColor((i + 1) / (hkReal)handles.getSize());
 		}
 		color = hkColor::rgbFromChars(hkColor::getRedAsChar(color), hkColor::getGreenAsChar(color), hkColor::getBlueAsChar(color), 127);
-		displaySolidAABB(aabb, color);
+		std::vector<core::triangle3df> g_triangles;
+		displaySolidAABB(aabb, color, g_triangles);
+		g_irrvecs.push_back(g_triangles);
 	}
 
 	//display current settings
@@ -300,7 +324,7 @@ hkColor::Argb BroadphaseCulling::spectrumColor(hkReal s) {
 	return hkColor::rgbFromFloats(color(0), color(1), color(2), 1);
 }
 
-void BroadphaseCulling::displaySolidAABB(const hkAabb& aabb, hkColor::Argb color) {
+void BroadphaseCulling::displaySolidAABB(const hkAabb& aabb, hkColor::Argb color, std::vector<core::triangle3df>& irr_triangles) {
 	const hkVector4 minMax[2] = { aabb.m_min, aabb.m_max };
 	hkVector4 vertices[8];
 
@@ -310,13 +334,118 @@ void BroadphaseCulling::displaySolidAABB(const hkAabb& aabb, hkColor::Argb color
 		}
 	}
 
+	irr_triangles.clear();
+
 	const int quads[][4] = { { 0, 2, 1, 3 }, { 4, 5, 6, 7 }, { 0, 1, 4, 5 }, { 1, 3, 5, 7 }, { 3, 2, 7, 6 }, { 2, 0, 6, 4 } };
 	for (int i = 0; i < (int)(sizeof(quads) / sizeof(quads[0])); i++) {
 		displaySolidQuad(vertices[quads[i][0]], vertices[quads[i][1]], vertices[quads[i][2]], vertices[quads[i][3]], color);
+
+		//this lines store triangles to draw spectrums
+		core::vector3df a(vertices[quads[i][0]](0), vertices[quads[i][0]](1), vertices[quads[i][0]](2)),
+			b(vertices[quads[i][1]](0), vertices[quads[i][1]](1), vertices[quads[i][1]](2)),
+			c(vertices[quads[i][2]](0), vertices[quads[i][2]](1), vertices[quads[i][2]](2)),
+			d(vertices[quads[i][3]](0), vertices[quads[i][3]](1), vertices[quads[i][3]](2));
+		core::triangle3df t1, t2;
+		t1.set(a, b, c);
+		t2.set(c, b, d);
+		irr_triangles.push_back(t1);
+		irr_triangles.push_back(t2);
+		//---------------------------------------------
 	}
 }
 
 void BroadphaseCulling::displaySolidQuad(const hkVector4& a, const hkVector4& b, const hkVector4& c, const hkVector4& d, hkColor::Argb color) {
 	HK_DISPLAY_TRIANGLE(a, b, c, color);
 	HK_DISPLAY_TRIANGLE(c, b, d, color);
+}
+
+//---------------------------Irrlicht-------------------------------//
+
+const int BroadphaseCulling::add_cameraIrr() {
+	scene_manager->addCameraSceneNode(0, core::vector3df(50.f, 50.f, 200.f), core::vector3df());
+
+	return 0;
+}
+
+const int BroadphaseCulling::add_gui_elementsIrr() {
+	device->setWindowCaption(L"BroadphaseCulling Demo - Havok+Irrlicht Engine");
+
+	return 0;
+}
+
+const int BroadphaseCulling::add_scene_nodesIrr() {
+	scene_manager->addLightSceneNode(0, core::vector3df(0, 0, 100), video::SColorf(1.0f, 1.f, 1.f, 1.0f), 800.0f);
+
+	for (std::vector<hkpRigidBody*>::iterator it = m_bodies.begin(); it != m_bodies.end(); it++) {
+		//add CubeSceneNode, his position & rotation
+		hkVector4 initial_hk_pos = (*it)->getPosition();
+		core::vector3df initial_pos(initial_hk_pos(0), initial_hk_pos(1), initial_hk_pos(2));
+		scene::IMeshSceneNode* g_body = scene_manager->addCubeSceneNode(1.f, 0, -1, initial_pos);
+
+		hkQuaternion initial_hk_rot = (*it)->getRotation();
+		if (initial_hk_rot.hasValidAxis()) {
+			hkVector4f axis;
+			initial_hk_rot.getAxis(axis);
+			float angle = core::radToDeg(initial_hk_rot.getAngle());
+			g_body->setRotation(core::vector3df(axis(0), axis(1), axis(2)) * angle);
+		}
+
+		g_body->addShadowVolumeSceneNode();
+		//g_body->setMaterialFlag(video::EMF_LIGHTING, false);
+		g_body->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
+		scene_manager->getMeshManipulator()->setVertexColors(g_body->getMesh(), video::SColor(255, 0, 255, 0));
+
+		g_bodies.push_back(g_body);
+	}
+
+	return 0;
+}
+
+const int BroadphaseCulling::runIrr() {
+	device->run();
+
+	driver->beginScene();
+
+	scene_manager->drawAll();
+	gui_env->drawAll();
+
+	//drawing frustum
+	driver->setTransform(video::ETS_WORLD, core::IdentityMatrix);
+	driver->draw3DLine(irr_nearPlaneQuad[0], irr_nearPlaneQuad[1], video::SColor(255, 255, 255, 0));
+	driver->draw3DLine(irr_nearPlaneQuad[1], irr_nearPlaneQuad[2], video::SColor(255, 255, 255, 0));
+	driver->draw3DLine(irr_nearPlaneQuad[2], irr_nearPlaneQuad[3], video::SColor(255, 255, 255, 0));
+	driver->draw3DLine(irr_nearPlaneQuad[3], irr_nearPlaneQuad[0], video::SColor(255, 255, 255, 0));
+
+	driver->draw3DLine(irr_farPlaneQuad[0], irr_nearPlaneQuad[0], video::SColor(255, 255, 255, 0));
+	driver->draw3DLine(irr_farPlaneQuad[1], irr_nearPlaneQuad[1], video::SColor(255, 255, 255, 0));
+	driver->draw3DLine(irr_farPlaneQuad[2], irr_nearPlaneQuad[2], video::SColor(255, 255, 255, 0));
+	driver->draw3DLine(irr_farPlaneQuad[3], irr_nearPlaneQuad[3], video::SColor(255, 255, 255, 0));
+
+	//drawing spectrums
+	for (int i = 0; i < g_irrvecs.size(); i++) {
+		for (int j = 0; j < g_irrvecs[i].size(); j++) {
+			driver->draw3DTriangle(g_irrvecs[i][j], video::SColor(1, 90, 140, 24));
+		}
+		g_irrvecs[i].clear();
+	}
+	g_irrvecs.clear();
+
+
+	//updating position & rotation
+	for (int i = 0; i < m_bodies.size(); i++) {
+		hkVector4 new_hk_pos = m_bodies[i]->getPosition();
+		core::vector3df new_pos(new_hk_pos(0), new_hk_pos(1), new_hk_pos(2));
+
+		hkQuaternion new_hk_rot = m_bodies[i]->getRotation();
+		if (new_hk_rot.hasValidAxis()) {
+			hkVector4f axis;
+			new_hk_rot.getAxis(axis);
+			float angle = core::radToDeg(new_hk_rot.getAngle());
+			g_bodies[i]->setRotation(core::vector3df(axis(0), axis(1), axis(2)) * angle);
+		}
+	}
+
+	driver->endScene();
+
+	return 0;
 }

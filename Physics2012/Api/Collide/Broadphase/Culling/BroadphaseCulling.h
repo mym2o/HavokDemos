@@ -21,6 +21,7 @@
 #pragma once
 
 #include "../../../../../HavokDefinitions.h"
+#include "../../../../../IrrInterface.h"
 
 #include <Common/Base/Algorithm/PseudoRandom/hkPseudoRandomGenerator.h>
 
@@ -36,7 +37,9 @@
 
 #include <Common\Base\Math\Matrix\hkMatrix3Util.h>
 
-class BroadphaseCulling : public HavokInterface {
+#include <vector>
+
+class BroadphaseCulling : public HavokInterface, IrrInterface {
 private:
 	hkPseudoRandomGenerator m_rand;
 	hkArray<hkpSimpleShapePhantom*> m_userObjects;
@@ -49,6 +52,11 @@ private:
 
 	VisualDebuggerHk vdb;
 
+	std::vector<hkpRigidBody*> m_bodies;
+	std::vector<scene::IMeshSceneNode*> g_bodies;
+	core::vector3df irr_nearPlaneQuad[4], irr_farPlaneQuad[4];
+	std::vector<std::vector<core::triangle3df> > g_irrvecs;
+
 	void step();
 public:
 	BroadphaseCulling();
@@ -58,13 +66,18 @@ public:
 	void quitHk();
 	void runHk();
 
-	static void createRandomBodies(hkpWorld* world, const hkAabb& worldAabb, int num_bodies, hkpMotion::MotionType motionType, class hkPseudoRandomGenerator* rand, hkArray<const hkpCollidable*>& collidablesOut);
+	const int add_cameraIrr();
+	const int add_gui_elementsIrr();
+	const int add_scene_nodesIrr();
+	const int runIrr();
+
+	static std::vector<hkpRigidBody*> createRandomBodies(hkpWorld* world, const hkAabb& worldAabb, int num_bodies, hkpMotion::MotionType motionType, class hkPseudoRandomGenerator* rand, hkArray<const hkpCollidable*>& collidablesOut);
 	//Compute a plane equation from triangle vertices, store offset to the origin in W
 	static hkVector4 computePlaneFromTriangle(const hkVector4& a, const hkVector4& b, const hkVector4& c);
 	//Generate color from the visible spectrum
 	static hkColor::Argb spectrumColor(hkReal s);
 	//Display a solid AABB
-	static void displaySolidAABB(const hkAabb& aabb, hkColor::Argb color);
+	static void displaySolidAABB(const hkAabb& aabb, hkColor::Argb color, std::vector<core::triangle3df>& irr_triangles);
 	//Display a solid quad
 	static void displaySolidQuad(const hkVector4& a, const hkVector4& b, const hkVector4& c, const hkVector4& d, hkColor::Argb color);
 };
