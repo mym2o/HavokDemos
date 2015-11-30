@@ -43,6 +43,36 @@
     <Filter Include="Source\Common\Api\Base\Streams">
       <UniqueIdentifier>{3eadfcbb-4812-4535-b3fe-37409fa18325}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\Physics2012">
+      <UniqueIdentifier>{cdcaa7f4-8b63-431d-9340-300597c64c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api">
+      <UniqueIdentifier>{cdf13329-c637-4e57-a49e-b8446d759a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide">
+      <UniqueIdentifier>{0ddb8852-940a-418b-875b-10d5e09ae578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\Broadphase">
+      <UniqueIdentifier>{c42d3d1b-5fc2-40b1-a3e6-ae5d554773a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\Broadphase\Culling">
+      <UniqueIdentifier>{c223f7d0-bf26-41a0-b092-ddb251802919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012">
+      <UniqueIdentifier>{f63c7ae9-c811-460f-8cd9-3dac232191d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api">
+      <UniqueIdentifier>{9d43abd6-aea0-4a49-a5f4-00213d6a28aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide">
+      <UniqueIdentifier>{4618ff40-e34d-449b-a7da-86add915fee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\Broadphase">
+      <UniqueIdentifier>{19c1eef9-8a29-44bb-bbe1-12b701104581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\Broadphase\Culling">
+      <UniqueIdentifier>{bd96feb3-2c00-4495-b363-33b8f7c16fdb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HavokDefinitions.h">
@@ -78,6 +108,9 @@
     <ClInclude Include="IrrInterface.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.h">
+      <Filter>Headers\Physics2012\Api\Collide\Broadphase\Culling</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -109,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="StandAloneDemos\Visualize.cpp">
       <Filter>Source\StandAloneDemos</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.cpp">
+      <Filter>Source\Physics2012\Api\Collide\Broadphase\Culling</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

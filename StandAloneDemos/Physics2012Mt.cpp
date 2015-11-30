@@ -260,7 +260,7 @@ void Physics2012Mt::createBallPh(hkVector4& posy) {
 //---------------------------Irrlicht-------------------------------//
 
 const int Physics2012Mt::add_cameraIrr() {
-	scene_manager->addCameraSceneNode(0, core::vector3df(10.f, 19.f, -20.f), core::vector3df());
+	scene_manager->addCameraSceneNode(0, core::vector3df(50.f, 50.f, 22.f), core::vector3df());
 	//scene_manager->addCameraSceneNodeFPS();
 
 	return 0;

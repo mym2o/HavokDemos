@@ -17,7 +17,7 @@
 #include <Physics2012/Collide/Query/CastUtil/hkpWorldRayCastOutput.h>			
 
 #include <Physics2012/Dynamics/World/hkpWorld.h>
-#include <Physics2012/Dynamics/Entity/hkpRigidBody.h>							
+#include <Physics2012/Dynamics/Entity/hkpRigidBody.h>
 #include <Physics2012/Utilities/Dynamics/Inertia/hkpInertiaTensorComputer.h>	
 
 #define HK_FEATURE_REFLECTION_PHYSICS_2012
