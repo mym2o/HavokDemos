@@ -33,15 +33,22 @@
 #include <Physics2012\Collide\Dispatch\hkpAgentRegisterUtil.h>
 #include <Physics2012\Utilities\Dynamics\Inertia\hkpInertiaTensorComputer.h>
 
+#include <vector>
+
 class MultiPendulums : public HavokInterface, IrrInterface {
 private:
 	hkpWorld* m_world;
 	VisualDebuggerHk vdb;
 	DemoEventReceiver receiver;
 
+	std::vector<hkpRigidBody*> m_bodies;
+	std::vector<scene::IMeshSceneNode*> g_bodies;
+
 	MarbleAction* m_marbleAction;
 	void createWorld();
 	void createMultiPendulumField();
+
+	void setColorAndShadow(scene::IMeshSceneNode* node, const video::SColor color);
 public:
 	MultiPendulums();
 	virtual ~MultiPendulums();
@@ -53,6 +60,6 @@ public:
 
 	const int add_cameraIrr();
 	const int add_gui_elementsIrr() { return 0; }
-	const int add_scene_nodesIrr() { return 0; }
+	const int add_scene_nodesIrr();
 	const int runIrr();
 };

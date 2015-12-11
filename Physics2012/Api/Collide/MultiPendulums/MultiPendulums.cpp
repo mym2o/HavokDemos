@@ -63,6 +63,11 @@ void MultiPendulums::createWorld() {
 	m_world->addEntity(characterRigidBody);
 	characterRigidBody->removeReference();
 
+	m_bodies.push_back(characterRigidBody);
+	scene::IMeshSceneNode* g_character = scene_manager->addCubeSceneNode(.7f, 0, -1, core::vector3df(0.f, 3.f, 5.f));
+	setColorAndShadow(g_character, video::SColor(255, 0, 255, 0));
+	g_bodies.push_back(g_character);
+
 	//create the "marble" action to drive him around
 	hkVector4 forward(1.f, 0.f, 0.f);
 	m_marbleAction = new MarbleAction(characterRigidBody, forward, characterRigidBody->getPosition(), 0.5f);
@@ -123,6 +128,11 @@ void MultiPendulums::createMultiPendulumField() {
 
 		m_world->createAndAddConstraintInstance(fixedBody, body, bas)->removeReference();
 		bas->removeReference();
+		
+		m_bodies.push_back(body);
+		scene::IMeshSceneNode* g_pend = scene_manager->addCubeSceneNode(.4f, 0, -1, core::vector3df(boxPos(0), boxPos(1), boxPos(2)));
+		setColorAndShadow(g_pend, video::SColor(255, 0, 0, 255));
+		g_bodies.push_back(g_pend);
 	}
 	boxShape->removeReference();
 }
@@ -155,6 +165,9 @@ void MultiPendulums::step() {
 }
 
 void MultiPendulums::runHk() {
+	add_scene_nodesIrr();
+	add_cameraIrr();
+
 	vdb.setVisualDebugger(m_world);
 
 	hkStopwatch stopWatch;
@@ -181,7 +194,8 @@ MultiPendulums::~MultiPendulums() {
 }
 
 const int MultiPendulums::add_cameraIrr() {
-	scene_manager->addCameraSceneNode();
+	scene_manager->addCameraSceneNode(0, core::vector3df(33.f, 21.f, -24.f), core::vector3df());
+	//scene_manager->addCameraSceneNodeFPS(0, 100, 0.01f);
 	return 0;
 }
 
@@ -193,7 +207,50 @@ const int MultiPendulums::runIrr() {
 	scene_manager->drawAll();
 	gui_env->drawAll();
 
+	for (int i = 0; i < m_bodies.size(); i++) {
+		hkVector4f bodyPos = m_bodies[i]->getPosition();
+		g_bodies[i]->setPosition(core::vector3df(bodyPos(0), bodyPos(1), bodyPos(2)));
+
+		hkQuaternion new_hk_rot = m_bodies[i]->getRotation();
+		if (new_hk_rot.hasValidAxis()) {
+			hkVector4f axis;
+			new_hk_rot.getAxis(axis);
+			float angle = core::radToDeg(new_hk_rot.getAngle());
+			g_bodies[i]->setRotation(core::vector3df(axis(0), axis(1), axis(2)) * angle);
+		}
+	}
+
 	driver->endScene();
 
 	return 0;
+}
+
+const int MultiPendulums::add_scene_nodesIrr() {
+	//add light
+	scene_manager->addLightSceneNode(0, core::vector3df(0, 100, 0), video::SColor(255, 255, 255, 255), 800.f);
+
+	//draw fixed ground
+	scene::IMeshSceneNode* ground = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(0.f, -0.5f, 0.f), core::vector3df(), core::vector3df(25.f, 1.f, 25.f) * 2.f);
+	setColorAndShadow(ground, video::SColor(255, 255, 0, 0));
+
+	ground = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(-25.f, 0.5f, 0.f), core::vector3df(), core::vector3df(0.5f, 0.5f, 25.f) * 2.f);
+	setColorAndShadow(ground, video::SColor(255, 255, 0, 0));
+
+	ground = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(25.f, 0.5f, 0.f), core::vector3df(), core::vector3df(0.5f, 0.5f, 25.f) * 2.f);
+	setColorAndShadow(ground, video::SColor(255, 255, 0, 0));
+
+	ground = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(0.f, 0.5f, 25.f), core::vector3df(), core::vector3df(25.f, 0.5f, 0.5f) * 2.f);
+	setColorAndShadow(ground, video::SColor(255, 255, 0, 0));
+
+	ground = scene_manager->addCubeSceneNode(1.f, 0, -1, core::vector3df(0.f, 0.5f, -25.f), core::vector3df(), core::vector3df(25.f, 0.5f, 0.5f) * 2.f);
+	setColorAndShadow(ground, video::SColor(255, 255, 0, 0));
+	//end fixed ground
+
+	return 0;
+}
+
+void MultiPendulums::setColorAndShadow(scene::IMeshSceneNode* node, const video::SColor color) {
+	node->addShadowVolumeSceneNode();
+	node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
+	scene_manager->getMeshManipulator()->setVertexColors(node->getMesh(), color);
 }

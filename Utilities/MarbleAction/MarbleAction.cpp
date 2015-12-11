@@ -32,6 +32,11 @@ void MarbleAction::applyAction(const hkStepInfo& stepInfo) {
 
 	if (m_forwardPressed) {
 		hkVector4 imp;
+		imp.setMul4(scale, f);
+		rb->applyLinearImpulse(imp);
+	}
+	if (m_backwardPressed) {
+		hkVector4 imp;
 		imp.setMul4(-scale, f);
 		rb->applyLinearImpulse(imp);
 	}

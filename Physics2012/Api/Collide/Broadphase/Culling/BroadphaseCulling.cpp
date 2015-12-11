@@ -391,7 +391,6 @@ const int BroadphaseCulling::add_scene_nodesIrr() {
 		}
 
 		g_body->addShadowVolumeSceneNode();
-		//g_body->setMaterialFlag(video::EMF_LIGHTING, false);
 		g_body->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
 		scene_manager->getMeshManipulator()->setVertexColors(g_body->getMesh(), video::SColor(255, 0, 255, 0));
 
