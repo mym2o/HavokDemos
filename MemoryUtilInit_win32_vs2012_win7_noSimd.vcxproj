@@ -324,6 +324,7 @@
       <DeploymentContent>False</DeploymentContent>
     </ClCompile>
     <ClCompile Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.cpp" />
+    <ClCompile Include="Physics2012\Api\Collide\MultiPendulums\MultiPendulums.cpp" />
     <ClCompile Include="StandAloneDemos\MemoryInitUtil.cpp" />
     <ClCompile Include="StandAloneDemos\Physics2012.cpp" />
     <ClCompile Include="StandAloneDemos\Physics2012Monitor.cpp" />
@@ -331,6 +332,9 @@
     <ClCompile Include="StandAloneDemos\Physics2012Vdb.cpp" />
     <ClCompile Include="StandAloneDemos\Serialize.cpp" />
     <ClCompile Include="StandAloneDemos\Visualize.cpp" />
+    <ClCompile Include="Utilities\EventReceiver\DemoEventReceiver.cpp" />
+    <ClCompile Include="Utilities\GameUtils\GameUtils.cpp" />
+    <ClCompile Include="Utilities\MarbleAction\MarbleAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Api\Base\DetailedTimers\DetailedTimers.h" />
@@ -338,6 +342,7 @@
     <ClInclude Include="HavokDefinitions.h" />
     <ClInclude Include="IrrInterface.h" />
     <ClInclude Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.h" />
+    <ClInclude Include="Physics2012\Api\Collide\MultiPendulums\MultiPendulums.h" />
     <ClInclude Include="StandAloneDemos\MemoryInitUtil.h" />
     <ClInclude Include="StandAloneDemos\Physics2012.h" />
     <ClInclude Include="StandAloneDemos\Physics2012Monitor.h" />
@@ -345,6 +350,9 @@
     <ClInclude Include="StandAloneDemos\Physics2012Vdb.h" />
     <ClInclude Include="StandAloneDemos\Serialize.h" />
     <ClInclude Include="StandAloneDemos\Visualize.h" />
+    <ClInclude Include="Utilities\EventReceiver\DemoEventReceiver.h" />
+    <ClInclude Include="Utilities\GameUtils\GameUtils.h" />
+    <ClInclude Include="Utilities\MarbleAction\MarbleAction.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

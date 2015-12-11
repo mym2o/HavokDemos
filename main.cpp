@@ -13,6 +13,8 @@
 #include "Common\Api\Base\DetailedTimers\DetailedTimers.h"
 #include "Common\Api\Base\Streams\Streams.h"
 #include "Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.h"
+#include "Physics2012\Api\Collide\MultiPendulums\MultiPendulums.h"
+
 #include <iostream>
 
 #include <driverChoice.h>
@@ -90,10 +92,15 @@ int HK_CALL main(int argc, const char** argv)
 			demo = new BroadphaseCulling();
 		}
 		break;
+		case 11:
+		{
+			demo = new MultiPendulums();
+		}
+		break;
 		default:
 			printf(" [Warning!] No demo selected. Please retry!\n");
 			printf(" 1. MemoryInitUtil\n 2. Serialize\n 3. Visualize\n 4. Physics2012\n 5. Physics2012Monitor\n " \
-					"6. Physics2012Vdb\n 7. Physics2012Mt\n 8. DetailedTimers\n 9. Streams\n 10. BroadphaseCulling\n 0. Exit\n");
+					"6. Physics2012Vdb\n 7. Physics2012Mt\n 8. DetailedTimers\n 9. Streams\n 10. BroadphaseCulling\n 11. MultiPendulums\n 0. Exit\n");
 			break;
 		}
 		if (demo) {

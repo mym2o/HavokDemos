@@ -73,6 +73,36 @@
     <Filter Include="Source\Physics2012\Api\Collide\Broadphase\Culling">
       <UniqueIdentifier>{bd96feb3-2c00-4495-b363-33b8f7c16fdb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\MultiPendulums">
+      <UniqueIdentifier>{99a4f7ec-ca6a-465f-b688-0b39c9adf87a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\MultiPendulums">
+      <UniqueIdentifier>{917a98b1-d62d-4e6e-80e9-fb55302105b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Utilities">
+      <UniqueIdentifier>{d29368fd-1d4d-41ff-894f-8f647e63b1d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utilities">
+      <UniqueIdentifier>{526efc70-dd72-4d8c-aa4e-13cf738300e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utilities\MarbleAction">
+      <UniqueIdentifier>{676f27cf-6100-495e-8af9-93a226cf8a56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Utilities\MarbleAction">
+      <UniqueIdentifier>{566eb91b-9b04-47d5-b01d-c9ed14fdfd1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utilities\GameUtils">
+      <UniqueIdentifier>{99e534f9-8cdd-4cf0-9ede-f30c6e5ca4d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Utilities\GameUtils">
+      <UniqueIdentifier>{ca734dce-b419-497b-9765-411b5a364e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utilities\EventReceiver">
+      <UniqueIdentifier>{6f4f516f-ef27-491e-b7a9-596cb27e3fdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Utilities\EventReceiver">
+      <UniqueIdentifier>{b066f3e7-38e8-48b7-be99-ee6d588c3f48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HavokDefinitions.h">
@@ -111,6 +141,18 @@
     <ClInclude Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.h">
       <Filter>Headers\Physics2012\Api\Collide\Broadphase\Culling</Filter>
     </ClInclude>
+    <ClInclude Include="Physics2012\Api\Collide\MultiPendulums\MultiPendulums.h">
+      <Filter>Headers\Physics2012\Api\Collide\MultiPendulums</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\MarbleAction\MarbleAction.h">
+      <Filter>Headers\Utilities\MarbleAction</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\GameUtils\GameUtils.h">
+      <Filter>Headers\Utilities\GameUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\EventReceiver\DemoEventReceiver.h">
+      <Filter>Headers\Utilities\EventReceiver</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -145,6 +187,18 @@
     </ClCompile>
     <ClCompile Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.cpp">
       <Filter>Source\Physics2012\Api\Collide\Broadphase\Culling</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012\Api\Collide\MultiPendulums\MultiPendulums.cpp">
+      <Filter>Source\Physics2012\Api\Collide\MultiPendulums</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\MarbleAction\MarbleAction.cpp">
+      <Filter>Source\Utilities\MarbleAction</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\GameUtils\GameUtils.cpp">
+      <Filter>Source\Utilities\GameUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\EventReceiver\DemoEventReceiver.cpp">
+      <Filter>Source\Utilities\EventReceiver</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
