@@ -67,7 +67,7 @@
     <OutputFile Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">.\release\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">.\</OutDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|win32'">MemoryUtilInit_win32-vs2012_win7_noSimd_release</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|win32'">IrrHkDemos</TargetName>
     <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|win32'">$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Dev|win32'">true</LinkIncremental>
