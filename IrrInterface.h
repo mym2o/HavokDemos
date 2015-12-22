@@ -53,4 +53,10 @@ public:
 		device->drop();
 		return 0;
 	}
+
+	virtual void setColorAndShadow(scene::IMeshSceneNode* node, const video::SColor color) {
+		node->addShadowVolumeSceneNode();
+		node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
+		scene_manager->getMeshManipulator()->setVertexColors(node->getMesh(), color);
+	}
 };

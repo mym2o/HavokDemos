@@ -103,6 +103,24 @@
     <Filter Include="Headers\Utilities\EventReceiver">
       <UniqueIdentifier>{b066f3e7-38e8-48b7-be99-ee6d588c3f48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\CollisionFiltering">
+      <UniqueIdentifier>{295a9642-5d6c-4c5b-bd30-42d72baa389d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\CollisionFiltering\CollisionFilter">
+      <UniqueIdentifier>{3b64918c-f0f3-418c-b800-2ddbdcd92111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\CollisionFiltering">
+      <UniqueIdentifier>{dbf93e46-3b98-439b-8823-3ad242b521f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\CollisionFiltering\CollisionFilter">
+      <UniqueIdentifier>{93648c53-9304-452c-9b41-438e9bcfd663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter">
+      <UniqueIdentifier>{205a0bf2-abd1-4fdc-937d-283fa560499c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter">
+      <UniqueIdentifier>{a5580e05-0bcd-4561-a921-1204e726c478}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HavokDefinitions.h">
@@ -153,6 +171,12 @@
     <ClInclude Include="Utilities\EventReceiver\DemoEventReceiver.h">
       <Filter>Headers\Utilities\EventReceiver</Filter>
     </ClInclude>
+    <ClInclude Include="Physics2012\Api\Collide\CollisionFiltering\CollisionFilter\CollisionFilter.h">
+      <Filter>Headers\Physics2012\Api\Collide\CollisionFiltering\CollisionFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter\ConstraintCollisionFilter.h">
+      <Filter>Headers\Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -199,6 +223,12 @@
     </ClCompile>
     <ClCompile Include="Utilities\EventReceiver\DemoEventReceiver.cpp">
       <Filter>Source\Utilities\EventReceiver</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012\Api\Collide\CollisionFiltering\CollisionFilter\CollisionFilter.cpp">
+      <Filter>Source\Physics2012\Api\Collide\CollisionFiltering\CollisionFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter\ConstraintCollisionFilter.cpp">
+      <Filter>Source\Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

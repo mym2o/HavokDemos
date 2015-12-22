@@ -14,47 +14,41 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //																												//
-//	A demo, which creates an array of pendulums, and a body to "drive" through them.							//
-//	It demonstrates the quality of the broadphase (worst case scenario for 3-axis sweep and prune).				//
+//	This demo shows how to use of the hkpConstraintCollisionFilter. Use this filter to disable collisions		//
+//	between all pairs of objects that are connected with a constraint (excluding contact point constraints).	//
+//	Note that collisions between unconnected objects will still occur unless you disable them using any			//
+//	of the other available filters.																				//
 //																												//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#include "../../../../HavokDefinitions.h"
-#include "../../../../Utilities/MarbleAction/MarbleAction.h"
-#include "../../../../Utilities/GameUtils/GameUtils.h"
-#include "../../../../Utilities/EventReceiver/DemoEventReceiver.h"
-
-#include <Common\Base\Algorithm\PseudoRandom\hkPseudoRandomGenerator.h>
-
-#include <Physics\Constraint\Data\BallAndSocket\hkpBallAndSocketConstraintData.h>
-
-#include <Physics2012\Collide\Dispatch\hkpAgentRegisterUtil.h>
-#include <Physics2012\Utilities\Dynamics\Inertia\hkpInertiaTensorComputer.h>
+#include "../../../../../HavokDefinitions.h"
+#include "../../../../../IrrInterface.h"
+#include "../../../../../Utilities/EventReceiver/DemoEventReceiver.h"
 
 #include <vector>
 
-class MultiPendulums : public HavokInterface, IrrInterface {
+class ConstraintCollisionFilter : public HavokInterface, IrrInterface {
 private:
 	hkpWorld* m_world;
-	VisualDebuggerHk vdb;
-	DemoEventReceiver receiver;
-
 	std::vector<hkpRigidBody*> m_bodies;
 	std::vector<scene::IMeshSceneNode*> g_bodies;
 
-	MarbleAction* m_marbleAction;
+	DemoEventReceiver receiver;
+
+	VisualDebuggerHk vdb;
+
 	void createWorld();
-	void createMultiPendulumField();
+	void createCollisionFilter();
+	void createRigidBodies();
+	void createHingeConstraint();
 public:
-	MultiPendulums();
-	virtual ~MultiPendulums();
-	void step();
+	ConstraintCollisionFilter();
 
 	void initHk();
-	void quitHk();
 	void runHk();
+	void quitHk();
 
 	const int add_cameraIrr();
 	const int add_gui_elementsIrr();

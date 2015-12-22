@@ -207,6 +207,9 @@ const int MultiPendulums::runIrr() {
 	scene_manager->drawAll();
 	gui_env->drawAll();
 
+	hkVector4 start_pos = m_marbleAction->getStartVector(), end_pos = m_marbleAction->getEndVector();
+	scene_manager->getActiveCamera()->setPosition(core::vector3df(start_pos(0), start_pos(1), start_pos(2)));
+	scene_manager->getActiveCamera()->setTarget(core::vector3df(end_pos(0), end_pos(1), end_pos(2)));
 	for (int i = 0; i < m_bodies.size(); i++) {
 		hkVector4f bodyPos = m_bodies[i]->getPosition();
 		g_bodies[i]->setPosition(core::vector3df(bodyPos(0), bodyPos(1), bodyPos(2)));
@@ -249,8 +252,7 @@ const int MultiPendulums::add_scene_nodesIrr() {
 	return 0;
 }
 
-void MultiPendulums::setColorAndShadow(scene::IMeshSceneNode* node, const video::SColor color) {
-	node->addShadowVolumeSceneNode();
-	node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true);
-	scene_manager->getMeshManipulator()->setVertexColors(node->getMesh(), color);
+const int MultiPendulums::add_gui_elementsIrr() {
+	device->setWindowCaption(L"MultiPendulums Demo - Havok+Irrlicht Engine");
+	return 0;
 }

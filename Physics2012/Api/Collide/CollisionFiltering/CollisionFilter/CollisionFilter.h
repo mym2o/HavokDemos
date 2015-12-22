@@ -14,28 +14,19 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //																												//
-//	A demo, which creates an array of pendulums, and a body to "drive" through them.							//
-//	It demonstrates the quality of the broadphase (worst case scenario for 3-axis sweep and prune).				//
+//	A demo which creates an array of box piles. Each pile is used to show how the hkpGroupFilter works.			//
 //																												//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
-#include "../../../../HavokDefinitions.h"
-#include "../../../../Utilities/MarbleAction/MarbleAction.h"
-#include "../../../../Utilities/GameUtils/GameUtils.h"
-#include "../../../../Utilities/EventReceiver/DemoEventReceiver.h"
-
-#include <Common\Base\Algorithm\PseudoRandom\hkPseudoRandomGenerator.h>
-
-#include <Physics\Constraint\Data\BallAndSocket\hkpBallAndSocketConstraintData.h>
-
-#include <Physics2012\Collide\Dispatch\hkpAgentRegisterUtil.h>
-#include <Physics2012\Utilities\Dynamics\Inertia\hkpInertiaTensorComputer.h>
+#include "../../../../../HavokDefinitions.h"
+#include "../../../../../IrrInterface.h"
+#include "../../../../../Utilities/EventReceiver/DemoEventReceiver.h"
 
 #include <vector>
 
-class MultiPendulums : public HavokInterface, IrrInterface {
+class CollisionFilter : public HavokInterface, IrrInterface {
 private:
 	hkpWorld* m_world;
 	VisualDebuggerHk vdb;
@@ -43,21 +34,25 @@ private:
 
 	std::vector<hkpRigidBody*> m_bodies;
 	std::vector<scene::IMeshSceneNode*> g_bodies;
+	std::vector<scene::ICameraSceneNode*> cameras;
+	video::SColor bodies_color;
 
-	MarbleAction* m_marbleAction;
+	int id_camera;
+
 	void createWorld();
-	void createMultiPendulumField();
+	void createCollisionFilter();
+	void createBase();
+	void createGrids();
 public:
-	MultiPendulums();
-	virtual ~MultiPendulums();
-	void step();
+	CollisionFilter();
+	virtual ~CollisionFilter();
 
 	void initHk();
-	void quitHk();
 	void runHk();
+	void quitHk();
 
+	const int runIrr();
 	const int add_cameraIrr();
 	const int add_gui_elementsIrr();
 	const int add_scene_nodesIrr();
-	const int runIrr();
 };

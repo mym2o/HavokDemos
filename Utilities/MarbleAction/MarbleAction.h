@@ -55,6 +55,9 @@ public:
 		return HK_NULL;
 	}
 
+	inline const hkVector4 getStartVector() const { return start; }
+	inline const hkVector4 getEndVector() const { return end; }
+
 private:
 	hkBool m_forwardPressed;
 	hkBool m_backwardPressed;
@@ -72,4 +75,6 @@ private:
 
 	const hkVector4 m_forward;
 	const hkVector4 m_resetPosition;
+
+	hkVector4 start, end;
 };

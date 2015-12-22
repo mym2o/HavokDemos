@@ -324,6 +324,8 @@
       <DeploymentContent>False</DeploymentContent>
     </ClCompile>
     <ClCompile Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.cpp" />
+    <ClCompile Include="Physics2012\Api\Collide\CollisionFiltering\CollisionFilter\CollisionFilter.cpp" />
+    <ClCompile Include="Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter\ConstraintCollisionFilter.cpp" />
     <ClCompile Include="Physics2012\Api\Collide\MultiPendulums\MultiPendulums.cpp" />
     <ClCompile Include="StandAloneDemos\MemoryInitUtil.cpp" />
     <ClCompile Include="StandAloneDemos\Physics2012.cpp" />
@@ -342,6 +344,8 @@
     <ClInclude Include="HavokDefinitions.h" />
     <ClInclude Include="IrrInterface.h" />
     <ClInclude Include="Physics2012\Api\Collide\Broadphase\Culling\BroadphaseCulling.h" />
+    <ClInclude Include="Physics2012\Api\Collide\CollisionFiltering\CollisionFilter\CollisionFilter.h" />
+    <ClInclude Include="Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter\ConstraintCollisionFilter.h" />
     <ClInclude Include="Physics2012\Api\Collide\MultiPendulums\MultiPendulums.h" />
     <ClInclude Include="StandAloneDemos\MemoryInitUtil.h" />
     <ClInclude Include="StandAloneDemos\Physics2012.h" />

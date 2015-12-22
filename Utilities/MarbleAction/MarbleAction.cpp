@@ -41,11 +41,11 @@ void MarbleAction::applyAction(const hkStepInfo& stepInfo) {
 		rb->applyLinearImpulse(imp);
 	}
 
-	if (m_leftPressed) {
+	if (m_rightPressed) {
 		m_currentAngle += 3.141592653f * 2 * m_rotationIncrement;
 	}
 
-	if (m_rightPressed) {
+	if (m_leftPressed) {
 		m_currentAngle -= 3.141592653f * 2 * m_rotationIncrement;
 	}
 
@@ -71,9 +71,9 @@ void MarbleAction::applyAction(const hkStepInfo& stepInfo) {
 
 	//draw current "facing" direction, usings "Debug" line. This gets pushed onto a global list,
 	//and gets dealt with by (perhaps) a drawDebugPointsAndLines() method from the mainline
-	hkVector4 start = rb->getPosition();
+	start = rb->getPosition();
 	//end = start + 1.5 * "forward"
-	hkVector4 end(start);
+	end = start;
 	f.mul4(1.5f);
 	end.add4(f);
 	//TODO: draw line from start to end
