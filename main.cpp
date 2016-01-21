@@ -1,6 +1,3 @@
-// This simple console demo demonstrates how to initialize memory using hkMemoryInitUtil, 
-// as well as startup/teardown of Havok's core systems.
-
 #pragma once
 
 #include "StandAloneDemos\MemoryInitUtil.h"
@@ -16,6 +13,8 @@
 #include "Physics2012\Api\Collide\MultiPendulums\MultiPendulums.h"
 #include "Physics2012\Api\Collide\CollisionFiltering\CollisionFilter\CollisionFilter.h"
 #include "Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter\ConstraintCollisionFilter.h"
+#include "Physics2012\Api\Collide\CollisionFiltering\PairCollisionFilter\PairCollisionFilter.h"
+#include "Physics2012\Api\Collide\ContactPointCallbacks\ContactState\ContactState.h"
 
 #include <iostream>
 
@@ -109,11 +108,22 @@ int HK_CALL main(int argc, const char** argv)
 			demo = new ConstraintCollisionFilter();
 		}
 		break;
+		case 14:
+		{
+			demo = new PairCollisionFilter();
+		}
+		break;
+		case 15:
+		{
+			demo = new ContactState();
+		}
+		break;
 		default:
 			printf(" [Warning!] No demo selected. Please retry!\n");
 			printf(" 1. MemoryInitUtil\n 2. Serialize\n 3. Visualize\n 4. Physics2012\n 5. Physics2012Monitor\n " \
 					"6. Physics2012Vdb\n 7. Physics2012Mt\n 8. DetailedTimers\n 9. Streams\n 10. BroadphaseCulling\n " \
-					"11. MultiPendulums\n 12. CollisionFilter\n 13. ConstraintCollisionFilter\n 0. Exit\n");
+					"11. MultiPendulums\n 12. CollisionFilter\n 13. ConstraintCollisionFilter\n 14. PairCollisionFilter\n " \
+					"15. ContactState\n 0. Exit\n");
 			break;
 		}
 		if (demo) {
@@ -130,4 +140,7 @@ int HK_CALL main(int argc, const char** argv)
 	}
 
 	return 0;
+}
+
+ContactState::~ContactState() {
 }

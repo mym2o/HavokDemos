@@ -121,6 +121,24 @@
     <Filter Include="Source\Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter">
       <UniqueIdentifier>{a5580e05-0bcd-4561-a921-1204e726c478}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\CollisionFiltering\PairCollisionFilter">
+      <UniqueIdentifier>{eb7212b0-b32f-431f-93dc-54661a293b1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\CollisionFiltering\PairCollisionFilter">
+      <UniqueIdentifier>{a91839b9-b9d1-48f0-830e-e125ddd4c01f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\ContactPointCallbacks">
+      <UniqueIdentifier>{9af5364d-bd3d-495c-83e6-69c788df72b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Physics2012\Api\Collide\ContactPointCallbacks\ContactState">
+      <UniqueIdentifier>{e11f37f6-ad64-4e37-8914-7af06e039dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\ContactPointCallbacks">
+      <UniqueIdentifier>{c2d16bf4-8399-42e9-bd7f-f2a5add93525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Physics2012\Api\Collide\ContactPointCallbacks\ContactState">
+      <UniqueIdentifier>{c12720d9-42a0-426d-a5dd-511500794889}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HavokDefinitions.h">
@@ -177,6 +195,15 @@
     <ClInclude Include="Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter\ConstraintCollisionFilter.h">
       <Filter>Headers\Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter</Filter>
     </ClInclude>
+    <ClInclude Include="Physics2012\Api\Collide\CollisionFiltering\PairCollisionFilter\PairCollisionFilter.h">
+      <Filter>Headers\Physics2012\Api\Collide\CollisionFiltering\PairCollisionFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics2012\Api\Collide\ContactPointCallbacks\ContactState\ContactState.h">
+      <Filter>Headers\Physics2012\Api\Collide\ContactPointCallbacks\ContactState</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics2012\Api\Collide\ContactPointCallbacks\ContactState\MyContactStateListener.h">
+      <Filter>Headers\Physics2012\Api\Collide\ContactPointCallbacks\ContactState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -229,6 +256,15 @@
     </ClCompile>
     <ClCompile Include="Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter\ConstraintCollisionFilter.cpp">
       <Filter>Source\Physics2012\Api\Collide\CollisionFiltering\ConstraintCollisionFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012\Api\Collide\CollisionFiltering\PairCollisionFilter\PairCollisionFilter.cpp">
+      <Filter>Source\Physics2012\Api\Collide\CollisionFiltering\PairCollisionFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012\Api\Collide\ContactPointCallbacks\ContactState\ContactState.cpp">
+      <Filter>Source\Physics2012\Api\Collide\ContactPointCallbacks\ContactState</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics2012\Api\Collide\ContactPointCallbacks\ContactState\MyContactStateListener.cpp">
+      <Filter>Source\Physics2012\Api\Collide\ContactPointCallbacks\ContactState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
